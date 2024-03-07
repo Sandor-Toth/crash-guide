@@ -18,7 +18,7 @@
 
 - Show the working directory status:
 
-`git status`
+    `git status`
 
 - Add a file to the staging area:
 

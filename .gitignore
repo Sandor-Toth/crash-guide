@@ -1,2 +1,4 @@
 env
 __pycache__
+app.log
+my_app_log_*
