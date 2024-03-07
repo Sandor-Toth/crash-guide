@@ -680,3 +680,125 @@ print(v3)  # Output: Vector(4, 6, 8)
 v4 = v2 - v1
 print(v4)  # Output: Vector(2, 2, 2)
 ```
+
+### Composition
+
+In object-oriented programming (OOP), a composite class, also known as a "composite object" or "composition", is a design pattern where one class is composed of one or more objects of other classes in such a way that the composing objects can be treated as a single unit. This pattern is a way to structure classes that allows for complex behaviors and functionalities by combining simpler, smaller components. 
+
+```
+class CPU:
+    def __init__(self, frequency, cores):
+        self.frequency = frequency  # in GHz
+        self.cores = cores
+
+    def __str__(self):
+        return f"CPU: {self.cores} cores at {self.frequency}GHz"
+
+
+class RAM:
+    def __init__(self, size):
+        self.size = size  # in GB
+
+    def __str__(self):
+        return f"RAM: {self.size}GB"
+
+
+class HardDrive:
+    def __init__(self, size, type):
+        self.size = size  # in TB
+        self.type = type  # HDD or SSD
+
+    def __str__(self):
+        return f"Hard Drive: {self.size}TB {self.type}"
+
+
+class Computer:
+    def __init__(self, cpu, ram, hard_drive):
+        self.cpu = cpu
+        self.ram = ram
+        self.hard_drive = hard_drive
+
+    def __str__(self):
+        return f"{self.cpu}\n{self.ram}\n{self.hard_drive}"
+
+
+# Create individual components
+my_cpu = CPU(3.5, 4)
+my_ram = RAM(16)
+my_hard_drive = HardDrive(1, "SSD")
+
+# Create a computer with the components
+my_computer = Computer(my_cpu, my_ram, my_hard_drive)
+
+print(my_computer)
+```
+
+```
+class Wheel:
+    def __init__(self, diameter):
+        self.diameter = diameter  # in inches
+
+    def __str__(self):
+        return f"Wheel diameter: {self.diameter}\""
+
+class Frame:
+    def __init__(self, material):
+        self.material = material  # e.g., aluminum, carbon fiber
+
+    def __str__(self):
+        return f"Frame material: {self.material}"
+
+class Bicycle:
+    def __init__(self, color, wheel_diameter, frame_material):
+        self.i_color = color
+        self.wheel = Wheel(wheel_diameter)
+        self.frame = Frame(frame_material)
+
+    def print_me(self):
+        print(f"This bicycle of color {self.i_color} with {self.wheel} and {self.frame}")
+
+# Example usage
+bicycle = Bicycle("red", 26, "carbon fiber")
+bicycle.print_me()
+# Demonstrating access to composed object attributes
+print(bicycle.wheel)
+print(bicycle.frame)
+print(bicycle.i_color)
+print(bicycle.wheel.diameter)
+print(bicycle.frame.material)
+```
+
+### Duck typing
+
+Duck typing is a concept related to dynamic typing in programming languages like Python, where the type or class of an object is less important than the methods it defines or the operations it supports. The name "duck typing" comes from the phrase "If it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck," which emphasizes the behavior of an object rather than its specific type.
+
+```
+def make_it_quack(duck):
+    duck.quack()
+
+class Duck:
+    def quack(self):
+        print("Quack, quack!")
+
+class Person:
+    def quack(self):
+        print("A person imitating a duck: Quack, quack!")
+
+# Creating instances of Duck and Person
+real_duck = Duck()
+person = Person()
+
+# Both objects can be passed to make_it_quack, thanks to duck typing
+make_it_quack(real_duck)
+make_it_quack(person)
+```
+
+**OOP Features**: OOP offers powerful tools like encapsulation, abstraction, inheritance, and polymorphism, which are advantageous in building large and complex applications, particularly those with extensive user interfaces and interactions.
+
+**Non-OOP Scenarios**: Scripts and Statelessness: For simple scripts or programs that execute tasks without needing to maintain state across operations, OOP can be more complex than necessary. Procedural or functional programming might be more straightforward and efficient.
+Data Processing and Science: In data-intensive applications, where the focus is on processing and transforming data, the procedural or functional paradigm can often be more appropriate. These tasks typically involve executing operations in a specific order rather than modeling and maintaining complex object states.
+
+**Specific Use Cases:**
+File Processing: Reading, processing, and writing data to files can be more easily managed with functions rather than classes and objects, especially if the operations are linear and don’t require interacting components.
+Device Configuration and Data Parsing: Similar to file processing, configuring devices and parsing or transforming data are tasks that can be efficiently accomplished with procedural code.
+Legacy Code and OOP: Porting a non-OOP codebase to an OOP framework without a clear design can result in a system that’s difficult to maintain. If the original code wasn’t designed with OOP in mind, wrapping procedures in classes may not leverage the benefits of OOP and could introduce unnecessary complexity.
