@@ -1,12 +1,12 @@
-### Core components of Python logging
+### Core Components of Python Logging
 
-**Logger**: The main entry point of the logging system. It provides the interface through which applications can log messages.
+**Logger**: The main entry point to the logging system. It provides the interface through which applications can log messages.
 
-**Logging Levels**: Define the severity of the messages being logged. The standard levels are DEBUG, INFO, WARNING, ERROR, and CRITICAL.
+**Logging Levels**: Define the severity of the messages to be logged. The default levels are DEBUG, INFO, WARNING, ERROR and CRITICAL.
 
-**Formatter**: Determines the format in which messages are logged, adding context like time, module name, level, etc.
+**Formatter**: Specifies the format in which messages are logged, adding context such as time, module name, level, etc.
 
-**Handler**: Responsible for dispatching the logged messages to appropriate destinations like console, files, email, etc.
+**Handler**: Responsible for sending logged messages to appropriate destinations such as console, files, email, etc.
 
 ### Basic Logging with the Root Logger
 
@@ -23,7 +23,7 @@ logging.warning("This is a warning message")
 WARNING:root:This is a warning message
 ```
 
-### Custom logger with different levels and handlers
+### Custom Logger with Different Levels and Handlers
 
 ```
 import logging
@@ -59,7 +59,7 @@ logger.addHandler(file_handler)
 logger.info("This message goes to the console and the file")
 ```
 
-### Advanced configuration with multiple handlers
+### Advanced Configuration with Multiple Handlers
 
 ```
 # Adding another handler for error messages only
@@ -72,7 +72,7 @@ logger.addHandler(error_file_handler)
 logger.error("This is an error message")
 ```
 
-### Configuring loggers lsing a configuration file
+### Configuring Loggers Using a Configuration File
 
 ```
 # logging_config.yaml
@@ -104,3 +104,4 @@ with open('logging_config.yaml', 'r') as f:
 logger = logging.getLogger('my_logger')
 logger.debug("This is a debug message configured via YAML")
 ```
+---
